@@ -57,11 +57,10 @@ body {
   font-size: 14px;
 }
 .container {
-  max-width: 1170px;
+  max-width: 1280px;
   padding: 0;
 }
 .top-section {
-  width: 1170px;
   margin: auto;
   position: relative;
 }
@@ -247,6 +246,157 @@ textarea {
 .site-content:after,
 .site-footer:after {
   clear: both;
+}
+
+/* =Header
+----------------------------------------------- */
+.header {
+  position: fixed;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.85);
+  padding: 5px 0;
+  z-index: 10;;
+}
+.hotline-social {
+  margin-left: 30px;
+  text-align: center;
+}
+.hotline-social .social span {
+  margin-right: 20px;
+}
+.hotline-social .social span:last-child {
+  margin-right: 0;
+}
+.hotline-social .social span i {
+  color: #156cb5;
+  font-size: 22px;
+  margin-right: 5px;
+}
+.hotline-social .hotline-header {
+  background-color: #156cb5;
+  font-size: 18px;
+  color: #fff;
+  text-transform: uppercase;
+  border-radius: 20px;
+  padding: 5px 30px;
+  margin-top: 10px;
+}
+.hotline-social .hotline-header span {
+  font-weight: bold;
+  margin-left: 15px;
+}
+
+/* =Content Index Page
+----------------------------------------------- */
+.project {
+  background-color: #156cb5;
+  margin-top: 10px;
+}
+.project h2 {
+  color: #156cb5;
+  background-color: #fff;
+  text-transform: uppercase;
+  margin: auto;
+  padding: 5px 40px;
+  border-radius: 20px;
+}
+.project .list-project {
+  font-size: 15px;
+  color: #fff;
+  text-transform: uppercase;
+  text-align: center;
+  margin: 30px 0;
+}
+.project .list-project span::after {
+  content: "|";
+  padding: 0 15px;
+}
+.project .list-project span:last-child::after {
+  content: "";
+}
+.project .info-project {
+  margin-bottom: 30px;
+  text-align: center;
+}
+.project .info-project a {
+  color: #fff;
+}
+.project .info-project h3 {
+  color: #fff;
+  text-transform: uppercase;
+  text-align: center;
+  margin-top: 15px;
+}
+.project .info-project p {
+  text-align: left;
+}
+.project .info-project img {
+  width: 100%;
+  max-height: 240px;
+}
+.project .info-project .read-more {
+  display: inline-block;
+  margin-bottom: 0;
+  padding: 2px 25px;
+  border: 1px solid #fff;
+  border-radius: 15px;
+  text-transform: uppercase;
+  transition: 0.4s;
+}
+.project .info-project a:hover .read-more {
+  background-color: #fff;
+  color: #156cb5;
+}
+.about-us {
+  margin: 40px 0 60px;
+}
+.about-us h2 {
+  color: #156cb5;
+  margin: auto;
+  text-transform: uppercase;
+}
+.about-us .text-about-us {
+  font-size: 16px;
+  color: #555;
+  text-align: center;
+  padding: 15px calc(100vw/10)
+}
+.about-us .info-about-us h3 {
+  color: #444;
+  text-transform: uppercase;
+}
+.about-us .info-about-us h3::before {
+  content: "";
+  width: 30px;
+  height: 30px;
+  background: transparent url(images/favicon-bachdatan.png);
+  background-size: cover;
+  display: inline-block;
+  margin-right: 10px;
+  margin-bottom: -7px;
+}
+.about-us .info-about-us h3::after {
+  content: "";
+  display: block;
+  width: 120px;
+  height: 2px;
+  background-color: #38b8d6;
+  margin-left: 40px;
+  margin-top: 5px;
+}
+.about-us .info-about-us p {
+  color: #555;
+  margin-top: 10px;
+  margin-left: 40px;
+}
+.about-us .info-about-us a {
+  color: #156cb5;
+  font-weight: bold;
+  margin-left: 40px;
+  text-transform: uppercase;
+}
+.about-us .info-about-us a:hover {
+  color: #38b8d6;
 }
 
 /* =Content
@@ -687,31 +837,16 @@ button:focus {
   float: right;
   text-align: right;
 }
-.navbar-collapse.collapse {
-  background: #f69021;
-}
-.navbar.navbar-default .container {
-  width: 1170px;
-  position: relative;
-}
 #logo {
   padding-left: 0;
 }
 #logo img {
+  width: 140px;
   float: left;
-}
-#exCollapsingNavbar2 {
-  background-color: #0054a5;
-}
-.navbar.navbar-default .site-name {
-  font-size: 20px;
-  color: #fff;
-  padding-top: 5px;
-  margin-left: 70px;
 }
 .navbar-default .navbar-nav > li > a {
   font-weight: bold;
-  color: #fff;
+  color: #444;
   line-height: 28px;
   text-transform: uppercase;
 }
@@ -746,8 +881,8 @@ button:focus {
 .dropdown-menu > li > a:focus,
 .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
 .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
-  color: #f82a08;
-  background-color: #0054a5 !important;
+  color: #156cb5;
+  background-color: transparent !important;
 }
 .navbar-default .navbar-nav .open .dropdown-menu > li > a {
   color: #666666;
@@ -777,11 +912,11 @@ button:focus {
   padding: 0;
 }
 .navbar-nav > li {
-  display: inline-block;
-  padding: 5px 0;
+  display: flex;
+  align-items: flex-end;
 }
 .navbar-nav > li > a {
-  padding: 9px 25px;
+  padding: 9px 20px;
 }
 .navbar-nav > li > a > i {
   margin-right: 10px;
@@ -806,11 +941,6 @@ button:focus {
 }
 .nav.navbar-nav {
   font-size: 15px;
-  width: 1170px;
-  margin: 3px auto;
-}
-.nav.navbar-nav li:first-child {
-  margin-left: 292px;
 }
 
 /* =Comments

@@ -190,6 +190,7 @@ function dazzling_header_menu() {
     'container_id'	    => 'exCollapsingNavbar2',
     'menu_class'        => 'nav navbar-nav',
     'fallback_cb'       => 'wp_bootstrap_navwalker::fallback',
+    'items_wrap'        => '<ul id="%1$s" class="%2$s">%3$s <div class="hotline-social"><div class="social"><span class="fb-social"><i class="fab fa-facebook-f"></i> Facebook</span><span class="yt-social"><i class="fab fa-youtube"></i> Youtube</span><span class="search"><i class="fas fa-search"></i></span></div><div class="hotline-header">Hotline: <span>0511.24.74.704</span></div></div></ul>',
     'walker'            => new wp_bootstrap_navwalker()
   ));
 } /* end header menu */
