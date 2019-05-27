@@ -12,16 +12,16 @@
 	<div id="footer-area">
 		<div class="container footer-inner">
 			<?php get_sidebar( 'footer' ); ?>
-			<footer id="colophon" class="site-footer">
-				<div class="site-info container">
-					<div class="copyright col-sm-12">
-					© 2017 <a href="<?php echo home_url(); ?>" title="<?php bloginfo( 'name' ); ?>"><?php bloginfo( 'name' ); ?></a>
-					</div>
-				</div><!-- .site-info -->
-				<div class="scroll-to-top"><i class="fa fa-angle-up"></i></div><!-- .scroll-to-top -->
-			</footer><!-- #colophon -->
 		</div>
 	</div>
+	<footer id="colophon" class="site-footer">
+		<div class="site-info container">
+			<div class="copyright col-sm-12">
+			© 2017 <a href="<?php echo home_url(); ?>" title="<?php bloginfo( 'name' ); ?>"><?php bloginfo( 'name' ); ?></a>
+			</div>
+		</div><!-- .site-info -->
+		<div class="scroll-to-top"><i class="fa fa-angle-up"></i></div><!-- .scroll-to-top -->
+	</footer><!-- #colophon -->
 </div><!-- #page -->
 <?php wp_footer(); ?>
 

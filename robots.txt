@@ -7,5 +7,3 @@ Disallow: */attachment/*
 Disallow: /trackback/
 Disallow: /xmlrpc.php
 Disallow: /go/
-
-Sitemap: https://maynenkhilehung.com/sitemap_index.xml

@@ -1,15 +1,23 @@
 (function($){
     $(document).ready(function () {
-        $(".list-product-mobile").on("click", function () {
-            if ($(".list-product-mobile").hasClass("clicked")) {
-                $("#secondary .widget.widget_product_categories, .top-section .list-catproduct").css("left", "calc(100vw/-1.5)");
-                $(".list-product-mobile").removeClass("clicked");
-                $(".list-product-mobile button span").removeClass("line-x");
+        var swiper = new Swiper('.swiper-container', {
+            slidesPerView: 5,
+            spaceBetween: 30,
+            pagination: {
+              el: '.swiper-pagination',
+              clickable: true,
+            },
+        });
+        headerMobile();
+        $(window).on('scroll', function () {
+            headerMobile();
+        });
+        function headerMobile() {
+            if($(window).scrollTop() > 0) {
+                $(".header").addClass("header-mobile");
             } else {
-                $("#secondary .widget.widget_product_categories, .top-section .list-catproduct").css("left", "0");
-                $(".list-product-mobile").addClass("clicked");
-                $(".list-product-mobile button span").addClass("line-x");
+                $(".header").removeClass("header-mobile");
             }
-        })
+        }
     })
 })(jQuery)

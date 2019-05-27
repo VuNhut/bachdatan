@@ -196,6 +196,10 @@ function dazzling_scripts() {
   if( ( is_home() || is_front_page() ) && of_get_option('dazzling_slider_checkbox') == 1 ) {
   	wp_enqueue_script( 'flexslider', get_template_directory_uri() . '/inc/js/flexslider.min.js', array('jquery'), '1.5.4', true );
   }
+  if( is_home() || is_front_page() ) {
+    wp_enqueue_style( 'swiper-css', get_template_directory_uri().'/inc/css/swiper.css' );
+    wp_enqueue_script( 'swiperjs', get_template_directory_uri() . '/inc/js/swiper.min.js', array('jquery'), '1.5.4', true );
+  }
 }
 add_action( 'wp_enqueue_scripts', 'dazzling_scripts' );
 
