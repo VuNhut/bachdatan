@@ -8,18 +8,21 @@
  */
 
 get_header(); ?>
-	<div id="content" class="row site-content container">
-		<?php get_sidebar(); ?>
-		<section id="primary" class="content-area col-lg-9 <?php echo of_get_option( 'site_layout' ); ?>">
-			<main id="main" class="site-main" role="main">
+	<div class="img-cat">
+		<div class="bg-img" style="background-image:url('<?php if (function_exists('z_taxonomy_image_url')) echo z_taxonomy_image_url();  ?>')">
+			<?php the_archive_description(); ?>
+		</div>
+	</div>
+	<div id="content" class="container">
+		<section id="primary" class="content-area <?php echo of_get_option( 'site_layout' ); ?>">
+			<main id="main" class="site-main row" role="main">
 
 			<?php if ( have_posts() ) : ?>
 
-				<header class="page-header">
+				<header class="page-header col-sm-12">
 					<h1 class="page-title">
 						<?php
 							if ( is_category() ) :
-								single_cat_title();
 
 							elseif ( is_tag() ) :
 								single_tag_title();
@@ -69,13 +72,6 @@ get_header(); ?>
 							endif;
 						?>
 					</h1>
-					<?php
-						// Show an optional term description.
-						$term_description = term_description();
-						if ( ! empty( $term_description ) ) :
-							printf( '<div class="taxonomy-description">%s</div>', $term_description );
-						endif;
-					?>
 				</header><!-- .page-header -->
 
 				<?php /* Start the Loop */ ?>
@@ -86,7 +82,11 @@ get_header(); ?>
 						 * If you want to override this in a child theme, then include a file
 						 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
 						 */
-						get_template_part( 'content', get_post_format() );
+						if (is_category("du-an")) {
+							get_template_part( 'content', 'project' );
+						} else {
+							get_template_part( 'content', get_post_format() );
+						}
 					?>
 
 				<?php endwhile; ?>

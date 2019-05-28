@@ -30,7 +30,7 @@
 
 				<?php if( get_header_image() != '' ) : ?>
 
-					<div id="logo" class="col-lg-2 col-12">
+					<div id="logo" class="col-lg-3 col-12">
 						<a href="<?php echo esc_url( home_url( '/' ) ); ?>"><img src="<?php header_image(); ?>"  height="<?php echo get_custom_header()->height; ?>" width="<?php echo get_custom_header()->width; ?>" alt="<?php bloginfo( 'name' ); ?>"/></a>
 					</div><!-- end of #logo -->
 
@@ -38,12 +38,12 @@
 
 				<?php if( !get_header_image() ) : ?>
 
-				<div id="logo" class="col-lg-2 col-12">
+				<div id="logo" class="col-lg-3 col-12">
 					<a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a>
 				</div><!-- end of #logo -->
 
 				<?php endif; // header image was removed (again) ?>
-				<nav class="navbar navbar-default navbar-expand-lg col-lg-10">
+				<nav class="navbar navbar-default navbar-expand-lg col-lg-9">
 					<button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#exCollapsingNavbar2" aria-controls="exCollapsingNavbar2" aria-expanded="false">
 					<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" role="img" focusable="false"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg>
 					</button>

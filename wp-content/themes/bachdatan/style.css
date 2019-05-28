@@ -40,7 +40,7 @@ Version: 1.0
   background-color: #fff;
 }
 ::-webkit-scrollbar-thumb {
-background-color: #00adef;
+background-color: #156cb5;
 }
 ::-webkit-scrollbar-thumb:hover {
 background-color: #ccc;
@@ -250,14 +250,17 @@ textarea {
 
 /* =Header
 ----------------------------------------------- */
+.home .header {
+  background-color: rgba(255, 255, 255, 0.85);
+}
 .header {
   position: fixed;
   width: 100%;
   height: 120px;
-  background-color: rgba(255, 255, 255, 0.85);
+  background-color: #fff;
   padding: 5px 0;
   box-shadow: 0 1px 5px -2px rgba(42,42,42,.4);
-  z-index: 10;
+  z-index: 100;
   transition: all 0.5s ease-in-out;
 }
 .header.header-mobile {
@@ -314,6 +317,7 @@ textarea {
   padding-bottom: 40px;
 }
 .project h2 {
+  font-size: 19px;
   color: #156cb5;
   background-color: #fff;
   text-transform: uppercase;
@@ -481,6 +485,7 @@ textarea {
   border-top: 10px solid #156cb5;
 }
 .news h2, .event h2, .partner h2 {
+  font-size: 19px;
   display: inline-block;
   background-color: #156cb5;
   color: #fff;
@@ -555,8 +560,154 @@ textarea {
   color: #fff;
 }
 
+/* =About Us
+----------------------------------------------- */
+.header-about-us {
+  background-image: url(images/banner-header-about-us.jpg);
+  background-size: cover;
+  height: 220px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin-bottom: 50px;
+}
+.header-about-us::before, .img-cat .bg-img::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  position: absolute;
+}
+.header-about-us p {
+  font-weight: bold;
+  color: #fff;
+  width: 50%;
+  line-height: 30px;
+  margin-bottom: 0;
+  text-align: center;
+  text-transform: uppercase;
+  position: relative;
+  z-index: 10;
+}
+.page-about-us .entry-title, .bod h2 {
+  font-weight: bold;
+  color: #333;
+  text-transform: uppercase;
+  text-align: center;
+}
+.page-about-us .page-header {
+  margin-bottom: 30px;
+}
+.box-timeline {
+  background-image: url(images/bg-timeline.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: #f0f0f0;
+  text-align: center;
+  margin-top: 50px;
+  padding-bottom: 50px;
+}
+.box-timeline h3 {
+  display: inline-block;
+  background-color: #fff;
+  color: #156cb5;
+  padding: 15px 40px;
+  text-transform: uppercase;
+}
+.bod {
+  margin: 50px 0;
+}
+.bod p.detail {
+  padding: 0 calc(100vw/7);
+  text-align: center;
+}
+.bod .swiper-container {
+  margin: 30px 0;
+}
+.bod .swiper-slide {
+  border: 1px solid #e4e4e4;
+}
+.bod .img {
+  height: 159px;
+  overflow: hidden;
+  text-align: center;
+}
+.bod .info-bod {
+  color: #555;
+  background-color: #e4e4e4;
+  height: 100%;
+  padding: 20px;
+}
+.bod .info-bod .name-bod {
+  font-size: 16px;
+  font-weight: bold;
+  color: #156cb5;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+}
+.bod .info-bod .pos-bod {
+  font-size: 16px;
+  font-style: italic;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.bod .info-bod .detail-bod {
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid #c9c9c9;
+}
+
+/* =Categories
+----------------------------------------------- */
+.img-cat {
+  padding-top: 120px;
+}
+.img-cat .bg-img {
+  position: relative;
+  height: 300px;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-weight: bold;
+  text-align: center;
+  text-transform: uppercase;
+}
+.img-cat .bg-img p {
+  position: relative;
+  width: 50%;
+  margin-bottom: 0;
+  line-height: 30px;
+}
+.project-cat .img-post {
+  display: block;
+  height: 235px;
+  overflow: hidden;
+}
+.project-cat .entry-title a {
+  display: block;
+  font-size: 20px;
+  font-weight: bold;
+  color: #156cb5;
+  margin-top: 15px;
+  text-transform: uppercase;
+  transition: all 0.5s;
+}
+.project-cat .entry-title a:hover, .project-cat:hover .entry-title a {
+  color: #26b5eb;
+}
+.project-cat .entry-content p {
+  font-size: 15px;
+  color: #555;
+}
+
 /* =Content
 ----------------------------------------------- */
+.site-content {
+  padding-top: 120px;
+}
 .hentry {
   margin: 0 0 1.5em;
 }
@@ -578,21 +729,28 @@ textarea {
 .single-product .entry-summary {
   margin: 0;
 }
+.page-about-us .entry-content {
+  padding: 0 calc(100vw/10);
+}
 .entry-content {
   font-size: 16px !important;
+}
+.entry-content p {
+  text-align: justify;
 }
 .page-links {
   clear: both;
   margin: 0 0 1.5em;
 }
 #content {
-  width: 1170px;
-  background: #fff;
-  margin: auto;
-  min-height: 420px;
+  margin: 50px auto;
 }
-#content > .row {
-  flex-direction: row-reverse;
+.line-break {
+  margin: 0 auto;
+  width: 60px;
+  height: 2px;
+  margin-bottom: 30px;
+  background-color: #156cb5;
 }
 /* =Post styling
 ----------------------------------------------- */
@@ -742,9 +900,6 @@ object {
 ----------------------------------------------- */
 .widget {
   margin: 15px 0 0;
-}
-#content #primary {
-  padding-left: 25px;
 }
 #content #secondary {
   padding-bottom: 15px;

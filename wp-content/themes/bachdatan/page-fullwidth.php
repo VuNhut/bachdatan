@@ -8,13 +8,13 @@
  */
 
 get_header(); ?>
-<div id="content" class="site-content container">
-	<div id="primary" class="content-area col-sm-12 col-md-12">
+<div class="site-content">
+	<div id="primary" class="content-area">
 		<main id="main" class="site-main">
 
 			<?php while ( have_posts() ) : the_post(); ?>
 
-				<?php get_template_part( 'content', 'page' ); ?>
+				<?php is_page("gioi-thieu") ? get_template_part( 'content', 'aboutus' ) : get_template_part( 'content', 'page' ); ?>
 
 				<?php
 					// If comments are open or we have at least one comment, load up the comment template

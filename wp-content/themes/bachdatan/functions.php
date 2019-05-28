@@ -187,18 +187,23 @@ function dazzling_scripts() {
 
   wp_enqueue_script( 'dazzling-main', get_template_directory_uri() . '/inc/js/main.js', array('jquery'), '1.5.4', true );
 
-  wp_enqueue_script( 'dazzling-scriptmain', get_template_directory_uri() . '/inc/js/script-main.js', array('jquery'), '1.5.4', true );
+  wp_enqueue_script( 'script-menu', get_template_directory_uri() . '/inc/js/script-menu.js', array('jquery'), '1.5.4', true );
 
   if( ( is_home() || is_front_page() ) && of_get_option('dazzling_slider_checkbox') == 1 ) {
-  	wp_enqueue_style( 'flexslider-css', get_template_directory_uri().'/inc/css/flexslider.css' );
-  }
-
-  if( ( is_home() || is_front_page() ) && of_get_option('dazzling_slider_checkbox') == 1 ) {
-  	wp_enqueue_script( 'flexslider', get_template_directory_uri() . '/inc/js/flexslider.min.js', array('jquery'), '1.5.4', true );
+    wp_enqueue_script( 'dazzling-scriptmain', get_template_directory_uri() . '/inc/js/script-main.js', array('jquery'), '1.5.4', true );
+    wp_enqueue_style( 'flexslider-css', get_template_directory_uri().'/inc/css/flexslider.css' );
+    wp_enqueue_script( 'flexslider', get_template_directory_uri() . '/inc/js/flexslider.min.js', array('jquery'), '1.5.4', true );
   }
   if( is_home() || is_front_page() ) {
     wp_enqueue_style( 'swiper-css', get_template_directory_uri().'/inc/css/swiper.css' );
     wp_enqueue_script( 'swiperjs', get_template_directory_uri() . '/inc/js/swiper.min.js', array('jquery'), '1.5.4', true );
+  }
+  if( is_page("gioi-thieu") ) {
+    wp_enqueue_style( 'swiper-css', get_template_directory_uri().'/inc/css/swiper.css' );
+    wp_enqueue_script( 'swiperjs', get_template_directory_uri() . '/inc/js/swiper.min.js', array('jquery'), '1.5.4', true );
+    wp_enqueue_style( 'timeline-css', get_template_directory_uri().'/inc/css/timeline.css' );
+    wp_enqueue_script( 'timelinejs', get_template_directory_uri() . '/inc/js/timeline.js', array('jquery'), '1.5.4', true );
+    wp_enqueue_script( 'script-aboutus', get_template_directory_uri() . '/inc/js/script-aboutus.js', array('jquery'), '1.5.4', true );
   }
 }
 add_action( 'wp_enqueue_scripts', 'dazzling_scripts' );
