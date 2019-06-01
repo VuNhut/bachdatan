@@ -5,66 +5,94 @@
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<header class="entry-header page-header">
-
-
-		<h1 class="entry-title "><?php the_title(); ?></h1>
-
-		<div class="entry-meta">
-			<?php dazzling_posted_on(); ?>
-		</div><!-- .entry-meta -->
-	</header><!-- .entry-header -->
 
 	<div class="entry-content">
-		<?php the_content(); ?>
-		<?php
-			wp_link_pages( array(
-				'before'            => '<div class="page-links">'.__( 'Pages:', 'dazzling' ),
-				'after'             => '</div>',
-				'link_before'       => '<span>',
-				'link_after'        => '</span>',
-				'pagelink'          => '%',
-				'echo'              => 1
-       		) );
-    	?>
+		<div class="container">
+			<h1 class="title"><?php the_title(); ?></h1>
+			<div class="line-break"></div>
+			<?php $thu_vien = rwmb_meta("thu-vien-hinh-anh"); if ($thu_vien) : ?>
+			<div class="gallery-project">
+				<div class="swiper-container gallery-top">
+					<div class="swiper-wrapper">
+						<?php foreach ( $thu_vien as $gallery ) { ?>
+						<div class="swiper-slide" style="background-image:url('<?php echo $gallery['full_url']; ?>')"></div>
+						<?php } ?>
+					</div>
+					<!-- Add Arrows -->
+					<div class="swiper-button-prev"></div>
+					<div class="swiper-button-next"></div>
+				</div>
+				<div class="swiper-container gallery-thumbs">
+					<div class="swiper-wrapper">
+						<?php foreach ( $thu_vien as $gallery ) { ?>
+						<div class="swiper-slide" style="background-image:url('<?php echo $gallery['full_url']; ?>')"></div>
+						<?php } ?>
+					</div>
+				</div>
+			</div>
+			<?php endif; ?>
+			<?php $tong_quan = rwmb_meta("tong-quan-du-an"); ?>
+			<div class="row content-project">
+				<h2 class="col-sm-12 title">Tổng quan</h2>
+				<div class="col-sm-4 info-project wow fadeInLeft" data-wow-duration="1.5s">
+					<div class="detail-info">
+						<p class="investor">Chủ đầu tư: <span><?php echo $tong_quan[0]; ?></span></p>
+						<p class="name-project">Tên dự án: <span><?php echo $tong_quan[1]; ?></span></p>
+						<p class="total-area">Tổng diện tích: <span><?php echo $tong_quan[2]; ?></span></p>
+						<?php if ($tong_quan[3]) : ?>
+							<p class="product-project">Sản phẩm: <span><?php echo $tong_quan[3]; ?></span></p>
+						<?php endif; ?>
+					</div>
+				</div>
+				<div class="col-sm-8 detail-project wow fadeInRight" data-wow-duration="1.5s">
+					<?php the_content(); ?>
+				</div>
+				<h2 class="col-sm-12 title">Vị trí dự án</h2>
+				<?php $vi_tri = rwmb_meta("vi-tri-du-an"); if ($vi_tri) : ?>
+				<div class="col-sm-6 info-location wow fadeInLeft" data-wow-duration="1.5s">
+					<?php echo $vi_tri; ?>
+				</div>
+				<?php endif; ?>
+				<?php $img_vi_tri = rwmb_meta("hinh-vi-tri-du-an"); if ($img_vi_tri) : ?>
+				<div class="col-sm-6 img-location wow fadeInRight" data-wow-duration="1.5s">
+					<img src="<?php echo $img_vi_tri['full_url'] ?>" alt="vị trí dự án">
+				</div>
+				<?php endif; ?>
+				<?php $tien_ich = rwmb_meta("tien-ich-du-an"); if ($tien_ich) : ?>
+				<h2 class="col-sm-12 title">Tiện ích dự án</h2>
+				<div class="col-sm-12 utilities wow fadeInUp" data-wow-duration="1.5s">
+					<?php echo $tien_ich; ?>
+				</div>
+				<div class="col-sm-12 text-center">
+					<div class="form-contact wow bounceInUp" data-wow-duration="1.5s">
+						<h3>Gửi nội dung liên hệ</h3>
+						<?php echo do_shortcode('[contact-form-7 id="1595" title="Contact form 1"]'); ?>
+					</div>
+				</div>
+				<?php endif; ?>
+			</div>
+			<?php
+				wp_link_pages( array(
+					'before'            => '<div class="page-links">'.__( 'Pages:', 'dazzling' ),
+					'after'             => '</div>',
+					'link_before'       => '<span>',
+					'link_after'        => '</span>',
+					'pagelink'          => '%',
+					'echo'              => 1
+				) );
+			?>
+			<?php $args_related = array('category_name' => 'du-an', 'posts_per_page' => 6, 'post__not_in' => array(get_the_ID())); ?>
+			<?php $query_related = new WP_Query($args_related); ?>
+			<?php if ($query_related->have_posts()) : ?>
+			<div class="row related-post">
+				<h2 class="col-sm-12 title">Dự án liên quan</h2>
+				<?php
+					while ($query_related->have_posts()) : $query_related->the_post();
+						get_template_part( 'content', 'project' );
+					endwhile;
+				?>
+			</div>
+			<?php endif; wp_reset_postdata(); ?>
+		</div>
 	</div><!-- .entry-content -->
-
-	<footer class="entry-meta">
-		<?php
-			/* translators: used between list items, there is a space after the comma */
-			$category_list = get_the_category_list( __( ', ', 'dazzling' ) );
-
-			/* translators: used between list items, there is a space after the comma */
-			$tag_list = get_the_tag_list( '', __( ', ', 'dazzling' ) );
-
-			if ( ! dazzling_categorized_blog() ) {
-				// This blog only has 1 category so we just need to worry about tags in the meta text
-				if ( '' != $tag_list ) {
-					$meta_text = '<i class="fa fa-folder-open-o"></i> %2$s. <i class="fa fa-link"></i> <a href="%3$s" rel="bookmark">permalink</a>.';
-				} else {
-					$meta_text = '<i class="fa fa-link"></i> <a href="%3$s" rel="bookmark">permalink</a>.';
-				}
-
-			} else {
-				// But this blog has loads of categories so we should probably display them here
-				if ( '' != $tag_list ) {
-					$meta_text = '<i class="fa fa-folder-open-o"></i> %1$s <i class="fa fa-tags"></i> %2$s. <i class="fa fa-link"></i> <a href="%3$s" rel="bookmark">permalink</a>.';
-				} else {
-					$meta_text = '<i class="fa fa-folder-open-o"></i> %1$s. <i class="fa fa-link"></i> <a href="%3$s" rel="bookmark">permalink</a>.';
-				}
-
-			} // end check for categories on this blog
-
-			printf(
-				$meta_text,
-				$category_list,
-				$tag_list,
-				get_permalink()
-			);
-		?>
-
-		<?php edit_post_link( __( 'Edit', 'dazzling' ), '<i class="fa fa-pencil-square-o"></i><span class="edit-link">', '</span>' ); ?>
-		<?php dazzling_setPostViews(get_the_ID()); ?>
-		<hr class="section-divider">
-	</footer><!-- .entry-meta -->
 </article><!-- #post-## -->

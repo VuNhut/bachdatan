@@ -13,6 +13,13 @@ get_header(); ?>
 			<?php the_archive_description(); ?>
 		</div>
 	</div>
+	<?php if (is_category(array(464, 465, 466, 467))) : ?>
+	<ul class="sub-cat">
+		<li class="cat-item <?php echo (is_category(465) ? "active" : ""); ?>"><a href="<?php echo get_category_link(465); ?>"><?php echo get_cat_name(465); ?></a></li>
+		<li class="cat-item <?php echo (is_category(466) ? "active" : ""); ?>"><a href="<?php echo get_category_link(466); ?>"><?php echo get_cat_name(466); ?></a></li>
+		<li class="cat-item <?php echo (is_category(467) ? "active" : ""); ?>"><a href="<?php echo get_category_link(467); ?>"><?php echo get_cat_name(467); ?></a></li>
+	</ul>
+	<?php endif; ?>
 	<div id="content" class="container">
 		<section id="primary" class="content-area <?php echo of_get_option( 'site_layout' ); ?>">
 			<main id="main" class="site-main row" role="main">
@@ -84,6 +91,10 @@ get_header(); ?>
 						 */
 						if (is_category("du-an")) {
 							get_template_part( 'content', 'project' );
+						} elseif (is_category("doi-tac")) {
+							get_template_part( 'content', 'partner' );
+						} elseif (is_category(array("tin-tuc", "tin-cong-ty", "tin-bat-dong-san", "su-kien-hinh-anh"))) {
+							get_template_part( 'content', 'news' );
 						} else {
 							get_template_part( 'content', get_post_format() );
 						}

@@ -11,6 +11,19 @@
         headerMobile();
         $(window).on('scroll', function () {
             headerMobile();
+            if ($(window).scrollTop() > ($(".why-us").position().top) - $(".why-us").height()*2) {
+                $('.count').each(function () {
+                    $(this).prop('Counter', 0).animate({
+                            Counter: $(this).data('value')
+                        }, {
+                        duration: 3000,
+                        easing: 'swing',
+                        step: function (now) {                      
+                            $(this).text(Math.ceil(now) + "+");
+                        }
+                    });
+                });
+            }
         });
         function headerMobile() {
             if($(window).scrollTop() > 0) {

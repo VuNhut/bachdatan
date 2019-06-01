@@ -180,10 +180,14 @@ function dazzling_scripts() {
   wp_enqueue_style( 'dazzling-icons', get_template_directory_uri().'/inc/css/all.min.css' );
 
   wp_enqueue_style( 'dazzling-style', get_stylesheet_uri() );
+  
+  wp_enqueue_style( 'animate-css', get_template_directory_uri().'/inc/css/animate.min.css' );
 
   wp_enqueue_script('dazzling-popper', get_template_directory_uri().'/inc/js/popper.js', array('jquery'), '1.5.4', true );
 
   wp_enqueue_script('dazzling-bootstrapjs', get_template_directory_uri().'/inc/js/bootstrap.min.js', array('jquery'), '1.5.4', true );
+
+  wp_enqueue_script( 'wow-js', get_template_directory_uri() . '/inc/js/wow.min.js', array('jquery'), '1.5.4', true );
 
   wp_enqueue_script( 'dazzling-main', get_template_directory_uri() . '/inc/js/main.js', array('jquery'), '1.5.4', true );
 
@@ -204,6 +208,10 @@ function dazzling_scripts() {
     wp_enqueue_style( 'timeline-css', get_template_directory_uri().'/inc/css/timeline.css' );
     wp_enqueue_script( 'timelinejs', get_template_directory_uri() . '/inc/js/timeline.js', array('jquery'), '1.5.4', true );
     wp_enqueue_script( 'script-aboutus', get_template_directory_uri() . '/inc/js/script-aboutus.js', array('jquery'), '1.5.4', true );
+  }
+  if(is_single() && in_category(462)) {
+    wp_enqueue_style( 'swiper-css', get_template_directory_uri().'/inc/css/swiper.css' );
+    wp_enqueue_script( 'swiperjs', get_template_directory_uri() . '/inc/js/swiper.min.js', array('jquery'), '1.5.4', true );
   }
 }
 add_action( 'wp_enqueue_scripts', 'dazzling_scripts' );
@@ -308,23 +316,56 @@ function wcc_change_breadcrumb_delimiter( $defaults ) {
 	return $defaults;
 }
 
-/* Meta Box Tổng Quan Dự Án */
-function get_meta_box_sanphamnoibat( $meta_boxes ) {
+/* Meta Box Dự Án */
+function get_meta_box_duan( $meta_boxes ) {
 	$prefix = '';
 
 	$meta_boxes[] = array(
-		'id' => 'san-pham-noi-bat',
-		'title' => esc_html__( 'Sản phẩm nổi bật', 'dazzling' ),
-		'post_types' => array( 'product' ),
+		'id' => 'thong-tin-du-an',
+		'title' => esc_html__( 'Thông tin dự án', 'dazzling' ),
+		'post_types' => array( 'post' ),
 		'context' => 'advanced',
 		'priority' => 'default',
 		'autosave' => false,
 		'fields' => array(
 			array(
-        'name' => 'Sản phẩm nổi bật',
-        'id'   => 'home-product',
-        'type' => 'checkbox',
-        'std'  => 0, // 0 or 1
+				'id' => $prefix . 'thu-vien-hinh-anh',
+				'type' => 'image_advanced',
+        'name' => esc_html__( 'Thư viện hình ảnh', 'dazzling' ),
+      ),
+      array(
+        'id'      => 'tong-quan-du-an',
+        'name'    => 'Tổng quan dự án *',
+        'type'    => 'text_list',
+        'options' => array(
+            'Chủ đầu tư'      => 'Chủ đầu tư *',
+            'Tên dự án' => 'Tên dự án *',
+            'Tổng diện tích' => 'Tổng diện tích *',
+            'Sản phẩm'      => 'Sản phẩm',
+        ),
+      ),
+      array(
+        'name'    => 'Thông tin vị trí dự án',
+        'id'      => 'vi-tri-du-an',
+        'type'    => 'wysiwyg',
+        'options' => array(
+            'textarea_rows' => 4,
+            'teeny'         => true,
+        ),
+      ),
+      array(
+        'type' => 'single_image',
+        'name' => 'Hình vị trí dự án *',
+        'id'   => 'hinh-vi-tri-du-an',
+      ),
+      array(
+        'name'    => 'Thông tin tiện ích dự án',
+        'id'      => 'tien-ich-du-an',
+        'type'    => 'wysiwyg',
+        'options' => array(
+            'textarea_rows' => 4,
+            'teeny'         => true,
+        ),
       ),
 		),
 	);
@@ -332,4 +373,4 @@ function get_meta_box_sanphamnoibat( $meta_boxes ) {
 	return $meta_boxes;
 }
 
-add_filter( 'rwmb_meta_boxes', 'get_meta_box_sanphamnoibat' );
+add_filter( 'rwmb_meta_boxes', 'get_meta_box_duan' );

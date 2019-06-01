@@ -7,7 +7,7 @@
  * @package dazzling
  */
 ?>
-		</div>
+		<?php echo (is_single() ? "</div>" : ""); ?>
 	</div><!-- #content -->
 	<div id="footer-area">
 		<div class="container footer-inner">

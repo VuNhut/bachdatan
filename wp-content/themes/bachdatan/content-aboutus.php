@@ -16,7 +16,7 @@
             <div class="line-break"></div>
         </header><!-- .entry-header -->
 
-        <div class="entry-content">
+        <div class="entry-content wow fadeIn">
             <p>Ra đời vào ngày 09 tháng 05 năm 2005, Công Ty TNHH Sản Xuất và Thương Mại Bách Đạt tự hào vì đã có một chặng đường 10 năm hoạt động ổn định, phát triển vững chắc, không ngừng mở rộng qui mô, ngành nghề và ngày càng khẳng định chỗ đứng của Doanh Nghiệp trên thương trường.</p>
             <p>Cùng với sự phát triển chung của Thành Phố Đà Nẵng, Công Ty TNHH Sản Xuất và Thương Mại Bách Đạt đã lựa chọn cho mình hướng đi phù hợp với những mục tiêu cụ thể trong từng giai đoạn.</p>
         </div><!-- .entry-content -->
@@ -25,7 +25,7 @@
         <h3>Quá trình phát triển</h3>
         <div class="container">
             <div class="time-line">
-                <div class="cd-horizontal-timeline loaded">
+                <div class="cd-horizontal-timeline loaded wow fadeInUp">
                     <div class="timeline">
                         <div class="events-wrapper">
                             <div class="events" style="width: 1540px;">
@@ -80,10 +80,10 @@
             <div class="row">
                 <h2 class="col-sm-12">Ban Lãnh Đạo</h2>
                 <div class="line-break"></div>
-                <p class="col-sm-12 detail">Bao gồm những người sáng lập và các thành viên cấp cao trong đội ngũ quản lý của Bách Đạt An, Ban điều hành định hướng tầm nhìn của Bách Đạt An và đưa ra các quyết định chiến lược và tài chính chủ chốt cho các công ty.</p>
+                <p class="col-sm-12 detail wow fadeIn">Bao gồm những người sáng lập và các thành viên cấp cao trong đội ngũ quản lý của Bách Đạt An, Ban điều hành định hướng tầm nhìn của Bách Đạt An và đưa ra các quyết định chiến lược và tài chính chủ chốt cho các công ty.</p>
             </div>
             <div class="swiper-container">
-				<div class="swiper-wrapper">
+				<div class="swiper-wrapper wow fadeInUp">
 					<div class="swiper-slide">
                         <div class="img">
                             <img src="<?php echo home_url() ?>/wp-content/themes/bachdatan/images/img-bod.jpg" alt="">
