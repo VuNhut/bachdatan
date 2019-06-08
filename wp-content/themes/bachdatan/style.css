@@ -327,18 +327,24 @@ textarea {
   border-bottom-right-radius: 15px;
 }
 .project .list-project {
-  font-size: 15px;
   color: #fff;
   text-transform: uppercase;
   text-align: center;
   margin: 50px 0;
 }
-.project .list-project span::after {
+.project .list-project span::after, .news .date-post span::after {
   content: "|";
   padding: 0 15px;
 }
-.project .list-project span:last-child::after {
+.project .list-project span:last-child::after, .news .date-post span:last-child::after {
   content: "";
+}
+.project .list-project span a {
+  font-size: 15px;
+  color: #fff;
+}
+.project .list-project span a:hover {
+  color: #00adef;
 }
 .project .info-project {
   margin-bottom: 30px;
@@ -356,13 +362,17 @@ textarea {
 .project .info-project p {
   font-size: 14px;
   text-align: left;
+  height: 70px;
+  overflow: hidden;
 }
 .project .info-project img {
   width: 100%;
-  max-height: 240px;
+  height: calc(100vw/7);
+  object-fit: cover;
 }
 .project .info-project .read-more {
   display: inline-block;
+  height: auto;
   margin-bottom: 0;
   padding: 2px 25px;
   border: 1px solid #fff;
@@ -410,6 +420,11 @@ textarea {
   background-color: #38b8d6;
   margin-left: 40px;
   margin-top: 5px;
+}
+.about-us .info-about-us .info {
+  max-height: 100px;
+  overflow: hidden;
+  margin-bottom: 15px;
 }
 .about-us .info-about-us p {
   font-size: 14px;
@@ -516,13 +531,25 @@ textarea {
 .news .news-left h3 {
   margin-top: 15px;
 }
-.news .news-left .date-post {
+.news .date-post {
   color: #777;
   font-style: italic;
   margin-bottom: 5px;
 }
+.news .date-post span::after {
+  padding: 0 5px;
+}
+.news .news-right .date-post {
+  font-size: 14px;
+  line-height: 100%;
+}
 .news .news-right .news-img, .news .news-right .news-info {
   margin-bottom: 15px;
+}
+.news .hover-animation img {
+  width: 100%;
+  max-height: calc(100vw/5.5);
+  object-fit: cover;
 }
 .news .more-news {
   display: inline-block;
@@ -561,6 +588,11 @@ textarea {
 }
 .event .event-item:hover h4 {
   color: #fff;
+}
+.event .hover-animation img {
+  width: 100%;
+  height: calc(100vw/7);
+  object-fit: cover;
 }
 .partner .swiper-slide {
   padding: 10px;
@@ -623,10 +655,17 @@ textarea {
   padding: 15px 40px;
   text-transform: uppercase;
 }
+.box-timeline .timeline-detail {
+  margin: 0 calc(100vw/7);
+}
+.box-timeline .timeline-detail p {
+  color: #fff;
+  margin-top: 30px;
+}
 .bod {
   margin: 50px 0;
 }
-.bod p.detail {
+.bod .detail {
   padding: 0 calc(100vw/7);
   text-align: center;
 }
@@ -668,6 +707,9 @@ textarea {
 
 /* =Contact
 ----------------------------------------------- */
+.page-id-1593 #primary {
+  margin: 0;
+}
 .page-contact {
   color: #fff;
   background-image: url(images/bg-contact.png);
@@ -767,6 +809,7 @@ div.wpcf7-validation-errors, div.wpcf7-acceptance-missing {
   font-weight: bold;
   text-align: center;
   text-transform: uppercase;
+  margin-bottom: 30px;
 }
 .img-cat .bg-img p {
   position: relative;
@@ -776,7 +819,6 @@ div.wpcf7-validation-errors, div.wpcf7-acceptance-missing {
 }
 .project-cat .img-post {
   display: block;
-  height: 235px;
   overflow: hidden;
 }
 .project-cat .entry-title a {
@@ -878,7 +920,8 @@ ul.sub-cat {
   align-items: center;
   text-align: center;
   list-style: none;
-  margin-top: -37px;
+  margin-top: -71px;
+  margin-bottom: 30px;
   position: relative;
   z-index: 10;
 }
@@ -908,6 +951,7 @@ ul.sub-cat li:hover a {
 
 /* Hover Animation */
 .hover-animation {
+  display: block;
   position: relative;
   overflow: hidden;
 }
@@ -970,12 +1014,40 @@ ul.sub-cat li:hover a {
 .entry-content p {
   text-align: justify;
 }
+.entry-content .date-time {
+  text-align: center;
+  background-color: #ddd;
+  margin-bottom: 30px;
+}
+.entry-content .date-time span {
+  display: block;
+}
+.entry-content .date-time span:first-child {
+  font-size: 30px;
+  font-weight: bold;
+  line-height: 45px;
+  border-bottom: 1px solid #999;
+  margin-bottom: 5px
+}
+.entry-content h1.title-post {
+  display: flex;
+  align-items: center;
+  font-size: 26px;
+  text-transform: uppercase;
+  line-height: 36px;
+  margin-bottom: 30px;
+}
+.entry-content .hover-animation img {
+  width: 100%;
+  height: calc(100vw/7);
+  object-fit: cover;
+}
+.single-post #primary {
+  margin: 40px 0;
+}
 .page-links {
   clear: both;
   margin: 0 0 1.5em;
-}
-#primary {
-  margin: 50px 0;
 }
 .line-break {
   margin: 0 auto;
@@ -984,10 +1056,18 @@ ul.sub-cat li:hover a {
   margin-bottom: 30px;
   background-color: #156cb5;
 }
+.wp-caption {
+  margin-bottom: 0 !important;
+  border: none !important;
+}
 /* =Post styling
 ----------------------------------------------- */
 .row {
   margin: 0;
+}
+.entry-content .row {
+  margin-left: -15px;
+  margin-right: -15px;
 }
 .entry-meta {
   margin-bottom: 10px;
@@ -1126,6 +1206,9 @@ hr.section-divider {
   margin: 30px 0;
   text-transform: uppercase;
 }
+.related-post h2.entry-title {
+  margin: 0 0 10px 0;
+}
 .gallery-top {
   height: 70%;
   width: 100%;
@@ -1195,7 +1278,9 @@ hr.section-divider {
   text-align: center;
 }
 .wp-caption .wp-caption-text {
+  font-style: italic;
   margin: 0.8075em 0;
+  text-align: center;
 }
 .site-main .gallery {
   margin-bottom: 1.5em;
@@ -1703,14 +1788,15 @@ p.logged-in-as {
   border-left: 1px solid #777;
 }
 .footer-widget p {
-  font-size: 15px;
+  font-size: 12px;
   color: #fff;
   margin-bottom: 10px;
 }
 .footer-widget a i {
-  font-size: 30px;
+  font-size: 18px;
   color: #26b5eb;
   padding: 10px;
+  margin-top: 10px;
   border: 1px solid #26b5eb;
   border-radius: 50%;
   transition: 0.4s;
@@ -1720,8 +1806,8 @@ p.logged-in-as {
   color: #fff;
 }
 .footer-widget i.fa-facebook-f {
-  padding-left: 18px;
-  padding-right: 18px;
+  padding-left: 15px;
+  padding-right: 15px;
   margin-right: 30px;
 }
 #footer-area ul li {
@@ -1740,7 +1826,7 @@ p.logged-in-as {
   font-size: inherit;
 }
 #footer-area .widgettitle {
-  font-size: 20px;
+  font-size: 15px;
   font-weight: 400;
   color: inherit;
   margin-top: 0px;
@@ -1862,11 +1948,6 @@ p.logged-in-as {
   .navbar > .container .navbar-brand {
     margin: 0;
   }
-  .navbar-default .navbar-nav > li > a {
-    line-height: 20px;
-    padding-top: 9px;
-    padding-bottom: 9px;
-  }
 }
 
 /* =Social icons
@@ -1915,13 +1996,13 @@ p.logged-in-as {
   #logo {
     display: flex;
     justify-content: center;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
   }
   .nav.navbar-nav {
     margin: auto;
   }
   .navbar-nav li {
-    border-bottom: 1px solid #fff;
+    border-bottom: 1px solid #ddd;
   }
   .navbar-nav li:last-child {
     border-bottom: none;
@@ -1954,21 +2035,144 @@ p.logged-in-as {
   color: #fff;
 }
 .cfa-button:hover {
-    background-color: #fff;
-    color: #1FA67A;
+  background-color: #fff;
+  color: #1FA67A;
 }
 .cfa-button:hover a {
-    color: #1FA67A;
+  color: #1FA67A;
+}
+
+@media screen and (max-width:1280px){
+  .navbar-nav > li > a {
+    padding: 9px 12px;
+  }
 }
 
 @media screen and (max-width:1170px){
+  .container {
+    max-width: 100%;
+  }
+  .bod .swiper-container {
+    padding: 0 15px;
+  }
+}
+
+@media screen and (max-width:992px){
+  .home .header {
+    background-color: #fff;
+  }
+  #logo a {
+    overflow: hidden;
+  }
+  .header.header-mobile {
+    height: 85px;
+    overflow: initial;
+  }
+  .header .navbar-default {
+    background-color: #fff;
+  }
+  .navbar-default .navbar-nav > li > a {
+    width: 100%;
+    line-height: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    text-align: center;
+  }
+  .hotline-social {
+    margin-right: 30px;
+  }
+  .hotline-social .social {
+    margin: 30px 0;
+  }
+  .header-mobile .social {
+    display: block;
+  }
+  .project .info-project img, .news .hover-animation img, .event .hover-animation img, .entry-content .hover-animation img {
+    height: calc(100vw/3.5);
+  }
+  .news .news-left, .news .news-right .news-img, .news .news-right .news-info {
+    margin-bottom: 30px;
+  }
+  .news .news-right .news-img {
+    padding-left: 0;
+  }
+  .news .news-right .news-info {
+    padding-right: 0;
+  }
+  .why-us .detail-why-us .number-item {
+    font-size: 45px;
+  }
+  .why-us .detail-why-us .detail-item {
+    font-size: 16px;
+  }
+  .about-us .info-about-us a {
+    display: block;
+    margin-bottom: 15px;
+  }
+  .partner .swiper-container {
+    padding: 0 15px;
+  }
+  .header-about-us p, .img-cat .bg-img p {
+    width: 90%;
+  }
 }
 
 @media screen and (max-width:767px){
+  .header-about-us p, .img-cat .bg-img p {
+    font-size: 14px;
+  }
+  .content-timeline div {
+    width: 90% !important;
+  }
+  .bod .detail {
+    padding: 0 calc(100vw/12);
+  }
+  ul.sub-cat {
+    font-size: 14px;
+    padding-left: 0;
+    margin-top: -67px;
+  }
+  .page-contact .form-contact {
+    margin-left: 37px;
+    margin-right: 15px;
+  }
+  .footer-widget {
+    display: block;
+    border: none;
+  }
 }
 
 @media screen and (max-width:575px){
+  .project .info-project img , .news .hover-animation img, .event .hover-animation img, .entry-content .hover-animation img {
+    height: calc(100vw/2);
+    max-height: calc(100vw/2);
+  }
+  .why-us .detail-why-us .number-item {
+    font-size: 36px;
+  }
+  .why-us .detail-why-us .detail-item {
+    font-size: 14px;
+  }
+  .page-about-us .entry-content {
+    padding: 0 15px;
+  }
+  .box-timeline .timeline-detail {
+    margin: 0 15px;
+  }
+  .bod .detail {
+    padding: 0 15px;
+  }
 }
 
 @media screen and (max-width:479px){
+  .why-us .detail-why-us .number-item {
+    font-size: 32px;
+  }
+  .header-about-us {
+    height: 300px;
+  }
+  ul.sub-cat li {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
 }

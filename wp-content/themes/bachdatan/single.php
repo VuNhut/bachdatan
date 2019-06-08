@@ -12,8 +12,13 @@ get_header(); ?>
 
 		<?php while ( have_posts() ) : the_post(); ?>
 
-			<?php get_template_part( 'content', 'single' ); ?>
-
+			<?php if (in_category(462)) : ?>
+				<?php get_template_part( 'content', 'single-project' ); ?>
+			<?php elseif (in_category(463)) : ?>
+				<?php get_template_part( 'content', 'single-partner' ); ?>
+			<?php else : ?>
+				<?php get_template_part( 'content', 'single' ); ?>
+			<?php endif; ?>
 			<?php
 				// If comments are open or we have at least one comment, load up the comment template
 				if ( comments_open() || '0' != get_comments_number() ) :

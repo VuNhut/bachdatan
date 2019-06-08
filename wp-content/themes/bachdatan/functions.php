@@ -374,3 +374,72 @@ function get_meta_box_duan( $meta_boxes ) {
 }
 
 add_filter( 'rwmb_meta_boxes', 'get_meta_box_duan' );
+
+/* Meta Box About Us Page */
+function get_meta_box_aboutus( $meta_boxes ) {
+	$prefix = '';
+
+	$meta_boxes[] = array(
+		'id' => 'thong-tin-trang-gioi-thieu',
+		'title' => esc_html__( 'Thông tin trang Giới Thiệu', 'dazzling' ),
+		'post_types' => array( 'page' ),
+		'context' => 'advanced',
+		'priority' => 'default',
+		'autosave' => false,
+		'fields' => array(
+      array(
+        'name'    => 'Giới thiệu chi tiết công ty *',
+        'id'      => 'gioi-thieu-chi-tiet',
+        'type'    => 'wysiwyg',
+        'options' => array(
+            'textarea_rows' => 4,
+            'teeny'         => true,
+        ),
+      ),
+      array(
+        'name'    => 'Giới thiệu quá trình phát triển *',
+        'id'      => 'gioi-thieu-qua-trinh-phat-trien',
+        'type'    => 'wysiwyg',
+        'options' => array(
+            'textarea_rows' => 4,
+            'teeny'         => true,
+        ),
+      ),
+      array(
+        'id'      => 'chi-tiet-qua-trinh-phat-trien',
+        'name'    => 'Chi tiết Quá trình phát triển *',
+        'type'    => 'text_list',
+        'clone'   => true,
+        'options' => array(
+          'Mốc thời gian'      => 'Mốc thời gian *',
+          'Nội dung' => 'Nội dung *',
+        ),
+      ),
+      array(
+        'name'    => 'Giới thiệu Ban Lãnh Đạo *',
+        'id'      => 'gioi-thieu-ban-lanh-dao',
+        'type'    => 'wysiwyg',
+        'options' => array(
+            'textarea_rows' => 4,
+            'teeny'         => true,
+        ),
+      ),
+      array(
+        'id'      => 'chi-tiet-ban-lanh-dao',
+        'name'    => 'Chi tiết Ban Lãnh Đạo *',
+        'type'    => 'text_list',
+        'clone'   => true,
+        'options' => array(
+          'Họ tên'      => 'Họ tên *',
+          'Chức danh' => 'Chức danh *',
+          'Giới thiệu ngắn' => 'Giới thiệu ngắn',
+          'Ảnh đại diện'    => 'Ảnh đại diện',
+        ),
+      ),
+		),
+	);
+
+	return $meta_boxes;
+}
+
+add_filter( 'rwmb_meta_boxes', 'get_meta_box_aboutus' );

@@ -89,7 +89,7 @@ get_header(); ?>
 						 * If you want to override this in a child theme, then include a file
 						 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
 						 */
-						if (is_category("du-an")) {
+						if (in_category("du-an")) {
 							get_template_part( 'content', 'project' );
 						} elseif (is_category("doi-tac")) {
 							get_template_part( 'content', 'partner' );

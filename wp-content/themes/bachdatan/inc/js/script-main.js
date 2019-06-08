@@ -7,6 +7,14 @@
               el: '.swiper-pagination',
               clickable: true,
             },
+            breakpoints: {
+                992: {
+                    slidesPerView: 3,
+                },
+                576: {
+                    slidesPerView: 2,
+                },
+            },
         });
         headerMobile();
         $(window).on('scroll', function () {

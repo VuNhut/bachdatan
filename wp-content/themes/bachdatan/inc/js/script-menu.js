@@ -12,6 +12,10 @@
                 $(".header").removeClass("header-mobile");
             }
         }
+        if($(window).width() < 992) {
+            $(".header #menu-main-menu").css("height", $(window).height() - $("#logo").height() + 25);
+            $(".top-section").css("padding-top", $("#logo").height());
+        };
         var showItem = 1;
         $(".gallery-thumbs").each(function(i, e){
             var thumbs = ".gallery-thumbs";
@@ -29,7 +33,7 @@
                         el: thumbs,
                         spaceBetween: 10,
                         slidesPerView: 4,
-                  }
+                    }
                 }
             });
             var galleryThumbs = new Swiper(thumbs, {

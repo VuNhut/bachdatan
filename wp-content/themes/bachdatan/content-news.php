@@ -4,7 +4,7 @@
  */
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class(array("col-sm-3", "news-cat", "wow", "fadeInUp")); ?>>
+<article id="post-<?php the_ID(); ?>" <?php post_class(array("col-lg-3", "col-md-4", "col-sm-6", "news-cat", "wow", "fadeInUp")); ?>>
 
 	<div class="entry-content">
         <?php if ( has_post_thumbnail()) : ?>

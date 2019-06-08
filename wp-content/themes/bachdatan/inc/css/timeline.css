@@ -6,7 +6,7 @@
   opacity: 1;
 }
 .cd-horizontal-timeline .timeline { position: relative; height: 155px;  width: 94%;  margin: 0 auto;}
-.cd-horizontal-timeline .events-wrapper { position: relative;  height: 100%;  margin: 0 70px 0 40px;  overflow: hidden;}
+.cd-horizontal-timeline .events-wrapper { position: relative;  height: 100%;  margin: 0 40px 0 40px;  overflow: hidden;}
 .cd-horizontal-timeline .events-wrapper::after, .cd-horizontal-timeline .events-wrapper::before {
   /* these are used to create a shadow effect at the sides of the timeline */
   content: '';
@@ -123,7 +123,7 @@ transition: opacity 1s; font-size: 14px; bottom: -70px; left: -130px;  visibilit
   bottom: auto;  right: auto;  -webkit-transform: translateX(-50%) translateY(-50%);  -moz-transform: translateX(-50%) translateY(-50%);  -ms-transform: translateX(-50%) translateY(-50%);
   -o-transform: translateX(-50%) translateY(-50%);  transform: translateX(-50%) translateY(-50%);
 }
-.cd-timeline-nav a.prev {left: -29px; background:url('../../images/icon-list-arrow.png') no-repeat; background-position:0px 0px;}
+.cd-timeline-nav a.prev {left: 0; background:url('../../images/icon-list-arrow.png') no-repeat; background-position:0px 0px;}
 .cd-timeline-nav a.prev:hover { background-position:-38px 0px;}
 .cd-timeline-nav a.next {  right: 0; background:url('../../images/icon-list-arrow.png') no-repeat;  background-position:-17px 0px;}
 .cd-timeline-nav a.next:hover { background-position:-54px 0px;}
