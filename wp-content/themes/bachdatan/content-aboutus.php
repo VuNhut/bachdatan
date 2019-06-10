@@ -7,7 +7,7 @@
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class("page-about-us"); ?>>
-    <div class="header-about-us">
+    <div id="gioi-thieu-chung" class="header-about-us">
         <?php the_content(); ?>
     </div>
     <div class="container">
@@ -20,7 +20,7 @@
             <?php $aboutUsDetail = rwmb_meta('gioi-thieu-chi-tiet'); echo $aboutUsDetail; ?>
         </div><!-- .entry-content -->
     </div>
-    <div class="box-timeline">
+    <div id="qua-trinh-phat-trien" class="box-timeline">
         <h3>Quá trình phát triển</h3>
         <div class="timeline-detail">
             <?php $timeLineDetail = rwmb_meta('gioi-thieu-qua-trinh-phat-trien'); echo $timeLineDetail; ?>
@@ -57,7 +57,7 @@
             </div>
         </div>
     </div>
-    <div class="bod">
+    <div id="ban-lanh-dao" class="bod">
         <div class="container">
             <div class="row">
                 <h2 class="col-sm-12">Ban Lãnh Đạo</h2>

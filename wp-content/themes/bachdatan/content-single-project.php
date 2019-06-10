@@ -34,7 +34,7 @@
 			<?php $tong_quan = rwmb_meta("tong-quan-du-an"); ?>
 			<div class="row content-project">
 				<h2 class="col-sm-12 title">Tổng quan</h2>
-				<div class="col-sm-4 info-project wow fadeInLeft" data-wow-duration="1.5s">
+				<div class="col-lg-4 info-project wow fadeInLeft" data-wow-duration="1.5s">
 					<div class="detail-info">
 						<p class="investor">Chủ đầu tư: <span><?php echo $tong_quan[0]; ?></span></p>
 						<p class="name-project">Tên dự án: <span><?php echo $tong_quan[1]; ?></span></p>
@@ -44,17 +44,17 @@
 						<?php endif; ?>
 					</div>
 				</div>
-				<div class="col-sm-8 detail-project wow fadeInRight" data-wow-duration="1.5s">
+				<div class="col-lg-8 detail-project wow fadeInRight" data-wow-duration="1.5s">
 					<?php the_content(); ?>
 				</div>
 				<h2 class="col-sm-12 title">Vị trí dự án</h2>
 				<?php $vi_tri = rwmb_meta("vi-tri-du-an"); if ($vi_tri) : ?>
-				<div class="col-sm-6 info-location wow fadeInLeft" data-wow-duration="1.5s">
+				<div class="col-lg-6 info-location wow fadeInLeft" data-wow-duration="1.5s">
 					<?php echo $vi_tri; ?>
 				</div>
 				<?php endif; ?>
 				<?php $img_vi_tri = rwmb_meta("hinh-vi-tri-du-an"); if ($img_vi_tri) : ?>
-				<div class="col-sm-6 img-location wow fadeInRight" data-wow-duration="1.5s">
+				<div class="col-lg-6 img-location wow fadeInRight" data-wow-duration="1.5s">
 					<img src="<?php echo $img_vi_tri['full_url'] ?>" alt="vị trí dự án">
 				</div>
 				<?php endif; ?>

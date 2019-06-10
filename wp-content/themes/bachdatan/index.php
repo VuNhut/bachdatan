@@ -65,21 +65,21 @@ get_header(); ?>
 					<div class="info">
 						<?php $aboutUsDetail = rwmb_meta('gioi-thieu-chi-tiet'); echo $aboutUsDetail; ?>
 					</div>
-					<a href="#">Chi tiết...</a>
+					<a href="<?php the_permalink(); ?>#gioi-thieu-chung">Chi tiết...</a>
 				</div>
 				<div class="col-lg-4 col-md-6 info-about-us wow fadeInUp" data-wow-offset="100">
 					<h3>Quá trình phát triển</h3>
 					<div class="info">
 						<?php $timeLine = rwmb_meta('gioi-thieu-qua-trinh-phat-trien'); echo $timeLine; ?>
 					</div>
-					<a href="#">Chi tiết...</a>
+					<a href="<?php the_permalink(); ?>#qua-trinh-phat-trien">Chi tiết...</a>
 				</div>
 				<div class="col-lg-4 col-md-6 info-about-us wow fadeInUp" data-wow-offset="100">
 					<h3>Ban lãnh đạo</h3>
 					<div class="info">
 						<?php $bod = rwmb_meta('gioi-thieu-ban-lanh-dao'); echo $bod; ?>
 					</div>
-					<a href="#">Chi tiết...</a>
+					<a href="<?php the_permalink(); ?>#ban-lanh-dao">Chi tiết...</a>
 				</div>
 			</div>
 		</div>
@@ -93,26 +93,24 @@ get_header(); ?>
 					<p>Đầu tư, Xây dựng và Kinh doanh trong lĩnh vực Bất động sản với triết lý kinh doanh ''Vươn đến tầm cao mới'' - tầm cao của tư duy, tầm cao của trách nhiệm, tầm cao của những giá trị.</p>
 				</div>
 				<div class="col-lg-7 col-md-6 detail-why-us">
-					<div class="container">
-						<div class="row">
-							<div class="col-6 detail-item wow fadeInLeft" data-wow-offset="150">
-								<p class="count number-item" data-value="7">7+</p>
-								<p>Dự án đang chào bán</p>
-								<p class="line-item"></p>
-							</div>
-							<div class="col-6 detail-item wow fadeInLeft" data-wow-offset="150">
-								<p class="count number-item" data-value="45">45+</p>
-								<p>Nhân viên</p>
-								<p class="line-item"></p>
-							</div>
-							<div class="col-6 detail-item wow fadeInLeft" data-wow-offset="150">
-								<p class="count number-item" data-value="5783">5783+</p>
-								<p>Giao dịch thành công</p>
-							</div>
-							<div class="col-6 detail-item wow fadeInLeft" data-wow-offset="150">
-								<p class="count number-item" data-value="10">10+</p>
-								<p>Năm kinh doanh</p>
-							</div>
+					<div class="row">
+						<div class="col-6 detail-item wow fadeInLeft" data-wow-offset="150">
+							<p class="count number-item" data-value="7">7+</p>
+							<p>Dự án đang chào bán</p>
+							<p class="line-item"></p>
+						</div>
+						<div class="col-6 detail-item wow fadeInLeft" data-wow-offset="150">
+							<p class="count number-item" data-value="45">45+</p>
+							<p>Nhân viên</p>
+							<p class="line-item"></p>
+						</div>
+						<div class="col-6 detail-item wow fadeInLeft" data-wow-offset="150">
+							<p class="count number-item" data-value="5783">5783+</p>
+							<p>Giao dịch thành công</p>
+						</div>
+						<div class="col-6 detail-item wow fadeInLeft" data-wow-offset="150">
+							<p class="count number-item" data-value="10">10+</p>
+							<p>Năm kinh doanh</p>
 						</div>
 					</div>
 				</div>
@@ -120,7 +118,6 @@ get_header(); ?>
 		</div>
 	</div>
 	<?php $args_news = array('cat' => 464, 'posts_per_page' => 5); $query_news = new WP_Query($args_news); ?>
-	<?php $args_allnews = array('cat' => 464); $query_allnews = new WP_Query($args_allnews); ?>
 	<?php if ($query_news->have_posts()) : $post_news = 1; ?>
 	<div class="news">
 		<h2>Tin tức mới</h2>
@@ -128,9 +125,13 @@ get_header(); ?>
 			<div class="row">
 				<?php while ($query_news->have_posts()) : $query_news->the_post(); ?>
 				<?php
-					$children = get_terms( "category", array(
-						'parent'    => 464,
-					) );
+					$catList = "";
+					foreach((get_the_category(get_the_ID())) as $childcat) {
+						$parentcat = $childcat->category_parent;
+						if (cat_is_ancestor_of($parentcat, $childcat)) {
+						 	$catList.= "<span>". $childcat->cat_name . '</span>';
+						}
+					}
 				?>
 				<?php if ($post_news==1) : ?>
 				<div class="col-lg-5 col-md-12 news-left wow fadeInLeft" data-wow-offset="150">
@@ -143,18 +144,15 @@ get_header(); ?>
 					<p class="date-post">
 						<?php echo get_the_date(); ?>
 						<?php
-							if ( $children ) { 
-								echo ' - ';
-								foreach( $children as $subcat )
-								{
-									echo '<span>'. $subcat->name . '</span>';
-								}
+							if($catList) {
+								echo " - ";
 							}
+							echo $catList;
 						?>
 					</p>
 					<?php the_excerpt(); ?>
 				</div>
-				<?php elseif ($post_news==2 && $post_news==$query_news->found_posts) : ?>
+				<?php elseif ($post_news==2 && $post_news==$query_news->post_count) : ?>
 				<div class="col-lg-7 col-md-12 news-right">
 					<div class="container">
 						<div class="row">
@@ -164,27 +162,24 @@ get_header(); ?>
 								</a>
 							</div>
 							<div class="col-lg-9 col-md-8 col-sm-7 news-info wow fadeInUp" data-wow-offset="150">
-								<a href="#" class="hover-animation">
+								<a href="<?php the_permalink() ?>" class="hover-animation">
 									<h4><?php the_title(); ?></h4>
 								</a>
 								<p class="date-post">
 									<?php echo get_the_date(); ?>
 									<?php
-										if ( $children ) { 
-											echo ' - ';
-											foreach( $children as $subcat )
-											{
-												echo '<span>'. $subcat->name . '</span>';
-											}
+										if($catList) {
+											echo " - ";
 										}
+										echo $catList;
 									?>
 								</p>
-								<?php the_excerpt(); ?>
+								<p class="news-excerpt"><?php echo get_the_excerpt(); ?></p>
 							</div>
 						</div>
 					</div>
 				</div>
-				<?php elseif ($post_news==2 && $post_news!=$query_news->found_posts) : ?>
+				<?php elseif ($post_news==2 && $post_news!=$query_news->post_count) : ?>
 				<div class="col-lg-7 col-md-12 news-right">
 					<div class="container">
 						<div class="row">
@@ -194,46 +189,40 @@ get_header(); ?>
 								</a>
 							</div>
 							<div class="col-lg-9 col-md-8 col-sm-7 news-info wow fadeInUp" data-wow-offset="150">
-								<a href="#" class="hover-animation">
+								<a href="<?php the_permalink() ?>" class="hover-animation">
 									<h4><?php the_title(); ?></h4>
 								</a>
 								<p class="date-post">
 									<?php echo get_the_date(); ?>
 									<?php
-										if ( $children ) { 
-											echo ' - ';
-											foreach( $children as $subcat )
-											{
-												echo '<span>'. $subcat->name . '</span>';
-											}
+										if($catList) {
+											echo " - ";
 										}
+										echo $catList;
 									?>
 								</p>
-								<?php the_excerpt(); ?>
+								<p class="news-excerpt"><?php echo get_the_excerpt(); ?></p>
 							</div>
-				<?php elseif ($post_news==$query_news->found_posts) : ?>
+				<?php elseif ($post_news==$query_news->post_count) : ?>
 							<div class="col-lg-3 col-md-4 col-sm-5 news-img wow fadeInUp" data-wow-offset="150">
 								<a href="<?php the_permalink() ?>" class="hover-animation">
 									<?php the_post_thumbnail(); ?>
 								</a>
 							</div>
 							<div class="col-lg-9 col-md-8 col-sm-7 news-info wow fadeInUp" data-wow-offset="150">
-								<a href="#" class="hover-animation">
+								<a href="<?php the_permalink() ?>" class="hover-animation">
 									<h4><?php the_title(); ?></h4>
 								</a>
 								<p class="date-post">
 									<?php echo get_the_date(); ?>
 									<?php
-										if ( $children ) { 
-											echo ' - ';
-											foreach( $children as $subcat )
-											{
-												echo '<span>'. $subcat->name . '</span>';
-											}
+										if($catList) {
+											echo " - ";
 										}
+										echo $catList;
 									?>
 								</p>
-								<?php the_excerpt(); ?>
+								<p class="news-excerpt"><?php echo get_the_excerpt(); ?></p>
 							</div>
 						</div>
 					</div>
@@ -245,26 +234,23 @@ get_header(); ?>
 								</a>
 							</div>
 							<div class="col-lg-9 col-md-8 col-sm-7 news-info wow fadeInUp" data-wow-offset="150">
-								<a href="#" class="hover-animation">
+								<a href="<?php the_permalink() ?>" class="hover-animation">
 									<h4><?php the_title(); ?></h4>
 								</a>
 								<p class="date-post">
 									<?php echo get_the_date(); ?>
 									<?php
-										if ( $children ) { 
-											echo ' - ';
-											foreach( $children as $subcat )
-											{
-												echo '<span>'. $subcat->name . '</span>';
-											}
+										if($catList) {
+											echo " - ";
 										}
+										echo $catList;
 									?>
 								</p>
-								<?php the_excerpt(); ?>
+								<p class="news-excerpt"><?php echo get_the_excerpt(); ?></p>
 							</div>
 				<?php endif; ?>
 				<?php $post_news++; endwhile; ?>
-				<?php if ($query_allnews->found_posts > $query_news->found_posts) : ?>
+				<?php if ($query_news->found_posts > $query_news->post_count) : ?>
 				<div class="col-sm-12">
 					<a href="<?php echo get_category_link(464); ?>" class="more-news">Xem tất cả</a>
 				</div>
